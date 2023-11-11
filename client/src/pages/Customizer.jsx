@@ -14,6 +14,8 @@ const Customizer = () => {
 
   const [file,setFile] = useState('');
 
+  const [isTabOpen,setIsTabOpen] = useState(true);
+
   const [prompt,setPrompt] = useState('');
   const [generatingImg,setGeneratingImg] = useState(false);
 
@@ -52,10 +54,10 @@ const Customizer = () => {
                 <Tab
                 key={tab.name}
                 tab={tab}
-                handleClick={()=>{setActiveEditorTab(tab.name)}}
+                handleClick={()=>{setActiveEditorTab(tab.name);setIsTabOpen((prev)=>{return(!prev)})}}
                 />
               ))}
-              {generateTabContent()}
+              {!isTabOpen && generateTabContent()}
             </div>
           </div>
         </motion.div>
